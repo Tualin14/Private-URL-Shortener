@@ -1,0 +1,8 @@
+name = "surl"
+main = "src/index.ts"
+compatibility_date = "2022-07-02"
+
+
+kv_namespaces = [
+    { binding = "SURLKV", id = "{YOUR_ID}" }
+]

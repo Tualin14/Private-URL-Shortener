@@ -1,2 +1,2 @@
 # SURL
-URL Shorten (Workers KV)
+Short URL (Workers KV)
