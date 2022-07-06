@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>SURL</title>
+</head>
+
+<body>
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center w-full">
+
+        <div class="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+            <div class="card-body">
+                <h2 class="card-title">SURL</h2>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Data</span>
+                    </label>
+                    <input type="text" id="data" class="input input-bordered"/>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">totp Token</span>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" id="totpToken" class="input input-bordered w-full"/>
+                        <button class="btn btn-primary w-40" onclick="getSurl()">Get SURL</button>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">SURL</span>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" id="copyInput" class="input input-bordered w-full"/>
+                        <button class="btn w-40" id="copyButton" disabled="disabled" onclick='copyToClipboard()'>Copy!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function getSurl() {
+        let data = document.getElementById('data').value
+        let totpToken = document.getElementById('totpToken').value
+        axios.post('/', {
+            data: data,
+            totpToken: totpToken
+        })
+            .then(function (res) {
+                    let resData = res.data
+                    let copyInput = document.getElementById('copyInput')
+                    let copyButton = document.getElementById('copyButton')
+                    copyButton.className = 'btn w-40'
+                    copyButton.setAttribute('disabled', 'disabled')
+                    if (resData === 'No permission') {
+                        copyInput.value = res.data
+                    } else {
+                        copyInput.value = window.location.origin + res.data
+                        copyButton.className += ' btn-success'
+                        copyButton.removeAttribute('disabled')
+                    }
+                }
+            )
+            .catch(function (error) {
+                document.getElementById('copy').value = 'error'
+            });
+    }
+
+    function copyToClipboard() {
+        let copyInput = document.getElementById("copyInput");
+        navigator.clipboard.writeText(copyInput.value);
+    }
+</script>
+</body>
+
+</html>

@@ -1,8 +1,7 @@
 import {hash32} from "./murmurhash3"
 
 export async function tokenGenerate(lurl: string): Promise<string> {
-    let num = hash32(lurl)
-    // console.log(num)
+    let num = hash32(lurl, SEED)
 
     let token = to58(num)
     return token
