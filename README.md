@@ -1,6 +1,10 @@
 # SURL
 
-Short URL (Workers KV)
+Private Short URL with Cloudflare Workers KV.
+
+- Serverless
+- API support
+- TOTP verify.
 
 [demo](https://dza.vin/)
 
