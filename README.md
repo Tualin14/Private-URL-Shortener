@@ -1,6 +1,6 @@
 # SURL
 
-Private Short URL with Cloudflare Workers KV.
+Private Short URL built with Cloudflare Workers KV.
 
 - Serverless
 - API support
