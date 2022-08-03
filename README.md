@@ -23,7 +23,7 @@ axios.post('/', {
 
 ### Response
 
-`/${token}` or `No permission`
+`/${token}` or `No permission(403)`
 
 # .
 ![x](SURL(KV).png)
