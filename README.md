@@ -1,6 +1,6 @@
 # SURL
 
-Private Short URL built with Cloudflare Workers KV.
+Create your own Private URL Shortener for Free with Cloudflare Workers KV.
 
 - Serverless
 - API support
